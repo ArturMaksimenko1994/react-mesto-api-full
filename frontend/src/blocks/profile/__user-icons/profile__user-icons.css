@@ -1,0 +1,8 @@
+.profile__user-icons {
+  width: 26px;
+  height: 26px;
+  background-image: url('./../../../images/icons/edit-avatar.svg');
+  border: none;
+  outline: none;
+  border: 0px solid transparent
+}

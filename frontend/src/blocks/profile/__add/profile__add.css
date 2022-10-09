@@ -1,0 +1,25 @@
+.profile__add {
+  background-image: url(./../../../images/icons/add.svg);
+  width: 150px;
+  height: 50px;
+  background-position: center;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+  background-color: transparent;
+  border: 2px solid #fff;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+}
+
+.profile__add:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 720px) {
+  .profile__add {
+    margin-top: 30px;
+    width: 282px;
+    height: 50px;
+    background-image: url(./../../../images/icons/add-min.svg);
+  }
+}

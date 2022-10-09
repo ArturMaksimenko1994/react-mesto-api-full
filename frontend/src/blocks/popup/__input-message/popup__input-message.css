@@ -1,0 +1,15 @@
+.popup__input-message {
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 13px;
+  color: #FF0000;
+  text-align: start;
+  display: none;
+  height: 13px;
+}
+.popup__input-message_active{
+  display: block;
+}
+.form__submit_inactive {
+  color: #3700ff;
+}

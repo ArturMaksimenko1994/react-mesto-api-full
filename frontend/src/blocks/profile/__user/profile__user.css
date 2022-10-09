@@ -1,0 +1,9 @@
+.profile__user {
+  position: relative;
+	width: 120px;
+  cursor: pointer;
+}
+
+.profile__user:hover .profile__user-shadow {
+  opacity: 1;
+}
