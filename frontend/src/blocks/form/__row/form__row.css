@@ -1,0 +1,6 @@
+.form__row {
+    max-width: 358px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+}

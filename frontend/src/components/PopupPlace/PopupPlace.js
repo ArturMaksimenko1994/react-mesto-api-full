@@ -29,6 +29,7 @@ const PopupPlace =({isOpen, onClose, onAddPlace}) => {
   }, [isOpen]); 
 
 
+
     return (
         <PopupWithForm isOpen={isOpen} onClose={onClose}  onSubmit={handleSubmit} name="Place" title="Новое место" >
             <label className="popup__label" htmlFor="nameCard">
