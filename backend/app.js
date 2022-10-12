@@ -14,6 +14,7 @@ const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const ErrorHandler = require('./middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 // errors
 const ErrorNotFound = require('./errors/error-not-found');
@@ -25,6 +26,7 @@ const app = express();
 
 // слушаем 3000 порт
 const { PORT = 3000 } = process.env;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -34,6 +36,14 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
+// Краш-тест сервера
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
+app.use(cors); // CORS запросы
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signin', celebrate({
@@ -57,11 +67,9 @@ app.use('/users', auth, userRouter);
 
 app.use('/cards', auth, cardRouter);
 
-// подключаем логгер ошибок
-app.use(errorLogger);
+app.use(errorLogger); // подключаем логгер ошибок
 
-// обработчик ошибок celebrate
-app.use(errors());
+app.use(errors());// обработчик ошибок celebrate
 
 // централизованный обработчик ошибок
 app.use(auth, ((req, res, next) => {

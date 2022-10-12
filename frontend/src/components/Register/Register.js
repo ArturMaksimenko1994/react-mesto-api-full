@@ -15,7 +15,6 @@ const Register = () => {
     const [status, setStatus] = useState(false);
     const [statusPopup, setStatusPopup] = useState(false);
     
-
     const handleChange = (e) => {
         const {name, value} = e.target;
         setData({

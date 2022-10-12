@@ -49,8 +49,6 @@ function App() {
     tokenCheck()
   }, [tokenCheck]);
 
-
-
   return (
     <div className="page">
           <Header loggedIn={loggedIn} signOut={signOut} email={email} />
