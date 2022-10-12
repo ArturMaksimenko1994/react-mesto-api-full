@@ -1,7 +1,7 @@
 export default class Api {
   constructor({address, token}) {
       this._address = address;
-      // this._token = token;
+      this._token = token;
   }
 
   _handleResponse = (res) => {
