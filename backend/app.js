@@ -44,6 +44,7 @@ app.get('/crash-test', () => {
 });
 
 app.use(cors); // CORS запросы
+
 app.use(requestLogger); // подключаем логгер запросов
 
 app.post('/signin', celebrate({
