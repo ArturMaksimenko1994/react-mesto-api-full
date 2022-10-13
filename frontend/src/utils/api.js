@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
   constructor({address, token}) {
       this._address = address;
       this._token = token;
@@ -107,8 +107,9 @@ class Api {
   }
 }
 
-const api = new Api({
-  address: "https://api.artur.studen.nomoredomains.icu"
-})
+// const api = new Api({
+//   address: "https://mesto.nomoreparties.co/v1/cohort36",
+//   token: "0f2196a7-ac75-4b8c-88fc-6c8538fba14b"
+// })
 
-export default api;
+// export default api;
