@@ -20,7 +20,7 @@ export const register = (password, email) => {
 };
 
 export const authorize = (password, email) => {
-  console.log(`Авторизация токен: ${localStorage.getItem('token')}`)
+  console.log(`Авторизация токен 1 : ${localStorage.getItem('token')}`)
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
@@ -33,7 +33,7 @@ export const authorize = (password, email) => {
   .then((data) => {
     if (data.token) {
       localStorage.setItem('token', data.token)
-      console.log(`Авторизация токен добавлен: ${localStorage.getItem('token')}`)
+      console.log(`Авторизация токен добавлен 2 : ${localStorage.getItem('token')}`)
       return data
     }
   })
