@@ -1,7 +1,6 @@
 export default class Api {
-  constructor({address, token}) {
+  constructor({address}) {
       this._address = address;
-      this._token = token;
   }
 
   _handleResponse = (res) => {
@@ -11,29 +10,29 @@ export default class Api {
       return Promise.reject(`Error ${res.status}`)
   }
 
-  getCards() {
+  getCards(token) {
       return fetch(`${this._address}/cards`, {
           headers: {
-              authorization: this._token
+              authorization: token
           }
       })
       .then((res) => this._handleResponse(res))
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
       return fetch(`${this._address}/users/me`, {
           headers: {
-              authorization: this._token
+              authorization: token
           }
       })
       .then((res) => this._handleResponse(res))
   }
 
-  editProfile(newValue) {
+  editProfile(newValue, token) {
       return fetch(`${this._address}/users/me`, {
           method: 'PATCH',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -44,11 +43,11 @@ export default class Api {
       .then((res) => this._handleResponse(res))
   }
 
-  editAvatar(newValue) {
+  editAvatar(newValue, token) {
       return fetch(`${this._address}/users/me/avatar`, {
           method: 'PATCH',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -58,11 +57,11 @@ export default class Api {
       .then((res) => this._handleResponse(res))
   }
 
-  postCard(newValue) {
+  postCard(newValue, token) {
       return fetch(`${this._address}/cards`, {
           method: 'POST',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -73,33 +72,33 @@ export default class Api {
       .then((res) => this._handleResponse(res))
   }
 
-  putLikeCard(idCard) {
+  putLikeCard(idCard, token) {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'PUT',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           }
       })
       .then((res) => this._handleResponse(res))
   }
 
-  deleteLikeCard(idCard) {
+  deleteLikeCard(idCard, token) {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'DELETE',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           }
       })
       .then((res) => this._handleResponse(res))
   }
 
-  removeCard(idCard) {
+  removeCard(idCard, token) {
       return fetch(`${this._address}/cards/${idCard}`, {
           method: 'DELETE',
           headers: {
-            authorization: this._token,
+            authorization: token,
             'Content-Type': 'application/json'
           }
       })
@@ -111,5 +110,3 @@ export default class Api {
 //   address: "https://mesto.nomoreparties.co/v1/cohort36",
 //   token: "0f2196a7-ac75-4b8c-88fc-6c8538fba14b"
 // })
-
-// export default api;

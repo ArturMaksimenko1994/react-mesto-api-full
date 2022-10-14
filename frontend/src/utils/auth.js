@@ -47,5 +47,4 @@ export const getInfo = (token) => {
     }
   })
   .then(handleResponse)
-  .then(data => data)
 }

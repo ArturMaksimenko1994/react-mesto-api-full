@@ -45,11 +45,13 @@ function App() {
 
   const signOut = () => {
     localStorage.removeItem('token');
+    history.push('/login');
 }
 
   useEffect(() => {
     tokenCheck()
   }, [tokenCheck]);
+
 
   return (
     <div className="page">
