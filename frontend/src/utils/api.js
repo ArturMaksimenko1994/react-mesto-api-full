@@ -108,11 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://api.artur.studen.nomoredomains.icu",
-  headers : {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json',
-  },
-});
+  address: "https://api.artur.studen.nomoredomains.icu"
+})
 
 export default api;
