@@ -13,7 +13,8 @@ export default class Api {
   getCards(token) {
       return fetch(`${this._address}/cards`, {
           headers: {
-              authorization: token
+              authorization: token,
+              'Content-Type': 'application/json'
           }
       })
       .then((res) => this._handleResponse(res))
@@ -22,7 +23,8 @@ export default class Api {
   getUserInfo(token) {
       return fetch(`${this._address}/users/me`, {
           headers: {
-              authorization: token
+              authorization: token,
+              'Content-Type': 'application/json'
           }
       })
       .then((res) => this._handleResponse(res))
