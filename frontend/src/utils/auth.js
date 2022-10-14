@@ -35,6 +35,7 @@ export const authorize = (password, email) => {
       localStorage.setItem('token', data.token)
       return data
     }
+    console.log(`Авторизация токен добавлен: ${localStorage.getItem('token')}`)
   })
 };
 
