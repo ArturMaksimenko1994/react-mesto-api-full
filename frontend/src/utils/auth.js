@@ -20,6 +20,7 @@ export const register = (password, email) => {
 };
 
 export const authorize = (password, email) => {
+  console.log(`Авторизация токен: ${localStorage.getItem('token')}`)
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {

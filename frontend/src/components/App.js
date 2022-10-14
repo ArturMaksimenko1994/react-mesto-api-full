@@ -26,7 +26,6 @@ function App() {
   }
 
   const tokenCheck = () => {
-    console.log(`Авторизация токен: ${localStorage.getItem('token')}`)
     const token = localStorage.getItem('token')
     if (token) {
       auth.getInfo(token).then((res) => {
