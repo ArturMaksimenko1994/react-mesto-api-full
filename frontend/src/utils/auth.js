@@ -1,4 +1,4 @@
-import { BASE_URL } from './utils';
+export const BASE_URL = 'https://auth.nomoreparties.co'
 
 const handleResponse = (res) => {
     if (res.ok) {
@@ -47,4 +47,5 @@ export const getInfo = (token) => {
     }
   })
   .then(handleResponse)
+  .then(data => data)
 }
