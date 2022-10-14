@@ -108,7 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://mesto.nomoreparties.co/v1/cohort36",
+  address: "api.artur.studen.nomoredomains.icu",
   token: `Bearer ${localStorage.getItem('token')}`
 })
 
