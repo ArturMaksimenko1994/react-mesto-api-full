@@ -90,7 +90,7 @@ class Api {
 const token = localStorage.getItem('token');
 
 const api = new Api({
-  url: "https://api.artur.studen.nomoredomains.icu/",
+  url: "https://api.artur.studen.nomoredomains.icu",
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
