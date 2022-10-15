@@ -26,15 +26,18 @@ function App() {
   }
 
   const tokenCheck = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
+    console.log(token)
     if (token) {
-      auth.getInfo(token).then((res) => {
+      auth.getInfo(token)
+      .then((res) => {
         if (res) {
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
         }
-      }).catch((err) => {
+      })
+      .catch((err) => {
         setloggedIn(false)
         console.error(err)
       })
