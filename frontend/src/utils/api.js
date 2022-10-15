@@ -1,5 +1,5 @@
 class Api {
-  constructor({config}) {
+  constructor(config) {
       this._address = config.address;
       this._token = config.token;
   }
