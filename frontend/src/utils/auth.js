@@ -8,7 +8,7 @@ const handleResponse = (res) => {
 }
 
 export const register = (password, email) => {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${this._address}/signup`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -20,7 +20,7 @@ export const register = (password, email) => {
 };
 
 export const authorize = (password, email) => {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${this._address}/signin`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -37,14 +37,11 @@ export const authorize = (password, email) => {
   })
 };
 
-export const getInfo = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export const getInfo = () => {
+  console.log(`информаия пользователя ${localStorage.setItem('token')}`)
+  return fetch(`${this._address}/users/me`, {
     method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    }
+    headers: this._header,
   })
   .then(handleResponse)
   .then(data => data)

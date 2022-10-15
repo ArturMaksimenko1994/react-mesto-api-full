@@ -28,7 +28,8 @@ function App() {
   const tokenCheck = () => {
     const token = localStorage.getItem('token')
     if (token) {
-      auth.getInfo(token).then((res) => {
+      auth.getInfo(token)
+      .then((res) => {
         if (res) {
           setloggedIn(true)
           history.push('/content')
