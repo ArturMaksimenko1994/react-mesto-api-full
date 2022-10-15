@@ -1,7 +1,7 @@
 class Api {
-  constructor({apiSettings}) {
-      this._address = apiSettings.address;
-      this._header = apiSettings.header;
+  constructor({address, token}) {
+      this._address = address;
+      this._token = token;
   }
 
   _handleResponse = (res) => {
@@ -108,11 +108,7 @@ class Api {
 }
 
 const api = new Api({
-  address: "https://api.artur.studen.nomoredomains.icu",
-  headers: {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json',
-  },
-});
+  address: "https://api.artur.studen.nomoredomains.icu"
+})
 
 export default api;
