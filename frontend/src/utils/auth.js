@@ -44,7 +44,7 @@ export const getInfo = (token) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token} ${console.log(token)}`,
+      'Authorization': `Bearer ${token}`,
     }
   })
   .then(handleResponse)
