@@ -32,8 +32,6 @@ export const authorize = (password, email) => {
   .then((data) => {
     if (data.token) {
       localStorage.setItem('token', data.token)
-      console.log(data)
-      console.log(data.token)
       return data
     }
   })
@@ -45,7 +43,7 @@ export const getInfo = (token) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token} ${console.log(token)}`,
+      'Authorization': `Bearer ${token}`,
     }
   })
   .then(handleResponse)
