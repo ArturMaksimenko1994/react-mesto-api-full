@@ -1,7 +1,7 @@
 class Api {
-  constructor({address, token}) {
-      this._address = address;
-      this._token = token;
+  constructor({config}) {
+      this._address = config.address;
+      this._token = config.token;
   }
 
   _handleResponse = (res) => {
@@ -13,18 +13,16 @@ class Api {
 
   getCards() {
       return fetch(`${this._address}/cards`, {
-          headers: {
-              authorization: this._token
-          }
+        method: "GET",
+        headers: this._headers,
       })
       .then((res) => this._handleResponse(res))
   }
 
   getUserInfo() {
       return fetch(`${this._address}/users/me`, {
-          headers: {
-              authorization: this._token
-          }
+        method: "GET",
+        headers: this._headers,
       })
       .then((res) => this._handleResponse(res))
   }
@@ -32,10 +30,7 @@ class Api {
   editProfile(newValue) {
       return fetch(`${this._address}/users/me`, {
           method: 'PATCH',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             name: newValue.name,
             about: newValue.about
@@ -47,10 +42,7 @@ class Api {
   editAvatar(newValue) {
       return fetch(`${this._address}/users/me/avatar`, {
           method: 'PATCH',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             avatar: newValue
           })
@@ -61,10 +53,7 @@ class Api {
   postCard(newValue) {
       return fetch(`${this._address}/cards`, {
           method: 'POST',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          },
+          headers: this._headers,
           body: JSON.stringify({
             name: newValue.name,
             link: newValue.link
@@ -76,10 +65,7 @@ class Api {
   putLikeCard(idCard) {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'PUT',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          }
+          headers: this._headers,
       })
       .then((res) => this._handleResponse(res))
   }
@@ -87,10 +73,7 @@ class Api {
   deleteLikeCard(idCard) {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'DELETE',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          }
+          headers: this._headers,
       })
       .then((res) => this._handleResponse(res))
   }
@@ -98,17 +81,20 @@ class Api {
   removeCard(idCard) {
       return fetch(`${this._address}/cards/${idCard}`, {
           method: 'DELETE',
-          headers: {
-            authorization: this._token,
-            'Content-Type': 'application/json'
-          }
+          headers: this._headers,
       })
       .then((res) => this._handleResponse(res))
   }
 }
 
+const token = localStorage.getItem('token');
+
 const api = new Api({
-  address: "https://api.artur.studen.nomoredomains.icu"
-})
+  url: "https://api.artur.studen.nomoredomains.icu/",
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  },
+});
 
 export default api;
