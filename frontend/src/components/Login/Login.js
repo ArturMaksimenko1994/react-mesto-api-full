@@ -31,7 +31,7 @@ const Login = ( {handleLogin} ) => {
                 if (data.token) {
                     handleLogin()
                     history.push('/')
-                    console.log(data.token)
+                    console.log(`handleSubmit ${data.token}`)
                 }
             }).catch((err) => {
                 console.error(err)
