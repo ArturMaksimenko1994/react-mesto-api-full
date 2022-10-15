@@ -149,11 +149,11 @@ const updateAvatar = (req, res, next) => {
 
 // информация о пользователе
 const getUserInfo = (req, res, next) => {
-  User.findById({ _id: req.user._id })
+  User.findById( req.user._id )
     .orFail(() => {
       throw new Error('NotFound');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send({ user }))
     .catch((err) => {
       if (err.message === 'NotFound') {
         return next(new ErrorNotFound('Пользователь не найден'));
