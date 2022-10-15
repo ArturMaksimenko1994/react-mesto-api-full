@@ -26,24 +26,22 @@ function App() {
   }
 
   const tokenCheck = () => {
-    const token = localStorage.getItem('token');
-    console.log(token)
+    const token = localStorage.getItem('token')
     if (token) {
-      auth.getInfo(token)
-      .then((res) => {
+      auth.getInfo(token).then((res) => {
         if (res) {
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
         }
-      })
-      .catch((err) => {
+      }).catch((err) => {
         setloggedIn(false)
         console.error(err)
       })
     }
   }
 
+  // выход из приложения и удаления token
   const signOut = () => {
     localStorage.removeItem('token');
     setloggedIn(false);
