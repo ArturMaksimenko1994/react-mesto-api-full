@@ -87,8 +87,6 @@ class Api {
   }
 }
 
-// const token = localStorage.getItem('token');
-
 export const api = new Api({
   url: "https://api.artur.studen.nomoredomains.icu",
   headers: {
