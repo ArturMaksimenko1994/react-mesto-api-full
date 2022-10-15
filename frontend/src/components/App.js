@@ -32,7 +32,7 @@ function App() {
         if (res) {
           setloggedIn(true)
           history.push('/content')
-          setEmail(res.email)
+          setEmail(res.data.email)
         }
       }).catch((err) => {
         setloggedIn(false)
