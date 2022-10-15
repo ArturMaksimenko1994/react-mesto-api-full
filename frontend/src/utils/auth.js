@@ -31,7 +31,6 @@ export const authorize = (password, email) => {
   .then(handleResponse)
   .then((data) => {
     if (data.token) {
-      console.log(`fetch authorize ${data.token}`)
       localStorage.setItem('token', data.token)
       return data
     }

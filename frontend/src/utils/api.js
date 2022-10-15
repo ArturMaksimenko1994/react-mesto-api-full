@@ -13,18 +13,22 @@ class Api {
 
   getCards() {
       return fetch(`${this._address}/cards`, {
-          headers: {
-              authorization: this._token
-          }
+        method: "GET",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+        }
       })
       .then((res) => this._handleResponse(res))
   }
 
   getUserInfo() {
       return fetch(`${this._address}/users/me`, {
-          headers: {
-              authorization: this._token
-          }
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json'
+      }
       })
       .then((res) => this._handleResponse(res))
   }
@@ -33,9 +37,9 @@ class Api {
       return fetch(`${this._address}/users/me`, {
           method: 'PATCH',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          },
+        },
           body: JSON.stringify({
             name: newValue.name,
             about: newValue.about
@@ -48,9 +52,9 @@ class Api {
       return fetch(`${this._address}/users/me/avatar`, {
           method: 'PATCH',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          },
+        },
           body: JSON.stringify({
             avatar: newValue
           })
@@ -62,9 +66,9 @@ class Api {
       return fetch(`${this._address}/cards`, {
           method: 'POST',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          },
+        },
           body: JSON.stringify({
             name: newValue.name,
             link: newValue.link
@@ -77,9 +81,9 @@ class Api {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'PUT',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          }
+        }
       })
       .then((res) => this._handleResponse(res))
   }
@@ -88,9 +92,9 @@ class Api {
       return fetch(`${this._address}/cards/${idCard}/likes`, {
           method: 'DELETE',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          }
+        }
       })
       .then((res) => this._handleResponse(res))
   }
@@ -99,9 +103,9 @@ class Api {
       return fetch(`${this._address}/cards/${idCard}`, {
           method: 'DELETE',
           headers: {
-            authorization: this._token,
+            authorization: `Bearer ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json'
-          }
+        }
       })
       .then((res) => this._handleResponse(res))
   }
