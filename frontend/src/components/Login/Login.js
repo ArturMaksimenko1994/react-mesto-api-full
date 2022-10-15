@@ -31,6 +31,7 @@ const Login = ( {handleLogin} ) => {
                 if (data.token) {
                     handleLogin()
                     history.push('/')
+                    console.log(`Как передается токен 2 ${localStorage.getItem('token')}`)
                 }
             }).catch((err) => {
                 console.error(err)

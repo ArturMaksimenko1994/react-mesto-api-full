@@ -33,6 +33,7 @@ function App() {
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
+          console.log(`Как передается токен 3 ${localStorage.getItem('token')}`)
         }
       }).catch((err) => {
         setloggedIn(false)

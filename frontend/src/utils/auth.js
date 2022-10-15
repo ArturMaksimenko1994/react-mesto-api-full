@@ -32,6 +32,7 @@ export const authorize = (password, email) => {
   .then((data) => {
     if (data.token) {
       localStorage.setItem('token', data.token)
+      console.log(`Как передается токен 1 ${localStorage.getItem('token')}`)
       return data
     }
   })
