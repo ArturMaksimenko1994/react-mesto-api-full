@@ -18,8 +18,8 @@ const Card = ({ card, onCardClick,onImageClick, onCardLike, onCardDelete }) => {
 
     const userContext = useContext(CurrentUserContext);
 
-    const isOwn = card.owner._id === userContext._id;
-    const isLiked = card.likes.some(i => i._id === userContext._id);
+    const isOwn = card._id === userContext._id;
+    const isLiked = card.likes.some((i) => i === userContext._id);
 
     const cardDeleteButtonClassName = (
         `element__delete ${isOwn ? '' : 'element__delete_disabled'}`
