@@ -24,6 +24,8 @@ const { RegularExpressions } = require('./validator/regular-expressions');
 // создаем сервер
 const app = express();
 
+require('dotenv').config();
+
 // слушаем 3000 порт
 const { PORT = 3000 } = process.env;
 

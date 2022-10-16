@@ -9,6 +9,8 @@ const ErrorUnauthorization = require('../errors/error-unauthorization');
 const ErrorNotFound = require('../errors/error-not-found');
 const ErrorConflict = require('../errors/error-conflict');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 // создание пользователя
 const createUser = (req, res, next) => {
   const {
@@ -48,7 +50,7 @@ const login = (req, res, next) => {
         return next(new ErrorUnauthorization('Неправильные почта или пароль'));
       }
       // создадим токен
-      const token = jwt.sign({ _id: user._id }, 'super-strong-secret', { expiresIn: '7d' }); // токен будет просрочен через 7 дней
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' }); // токен будет просрочен через 7 дней
       return bcrypt.compare(password, user.password) // сравниваем переданный пароль и хеш из базы
         .then((matched) => {
           if (!matched) {
