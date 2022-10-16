@@ -18,7 +18,7 @@ const Card = ({ card, onCardClick,onImageClick, onCardLike, onCardDelete }) => {
 
     const userContext = useContext(CurrentUserContext);
 
-    const isOwn = card._id === userContext._id;
+    const isOwn = card.owner === userContext._id;
     const isLiked = card.likes.some((i) => i === userContext._id);
 
     const cardDeleteButtonClassName = (
@@ -34,7 +34,7 @@ const Card = ({ card, onCardClick,onImageClick, onCardLike, onCardDelete }) => {
             <button onClick={handleClick} className="element__img-container" type="button" aria-label="Открыть изображение">
                 <img className="element__img"  src={card.link} alt={card.name} />
             </button>
-            
+  
             <button onClick={handleDeleteClick} className={cardDeleteButtonClassName} src={card.link} alt={card.name}></button>
             <div className="element__description">
                 <h2 className="element__title" >{card.name}</h2>
