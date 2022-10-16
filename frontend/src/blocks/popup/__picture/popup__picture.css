@@ -1,6 +1,7 @@
 .popup__picture {
   width: 433px;
   height: 540px;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 520px) {
