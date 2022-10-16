@@ -100,7 +100,7 @@ const Content = () => {
   
     //лайк card
     const handleCardLike = (card) => {
-      const isLiked = card.likes.some(i => i._id === currentUser._id);
+      const isLiked = card.likes.some((i) => i === currentUser._id);
   
       !isLiked
         ? api.putLikeCard(card._id)
