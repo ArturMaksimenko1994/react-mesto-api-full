@@ -152,7 +152,7 @@ const Content = () => {
     useEffect(() => {
       api.getUserInfo()
         .then((res) => {
-          setCurrentUser({ res })
+          setCurrentUser({ ...res })
         })
         .catch((err) => {
           console.log(`Ошибка при получении данных профиля ${err}`)

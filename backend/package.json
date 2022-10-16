@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/ArturMaksimenko1994/express-mesto-gha/issues"
   },
-  "homepage": ".",
+  "homepage": "https://github.com/ArturMaksimenko1994/express-mesto-gha#readme",
   "devDependencies": {
     "eslint": "^8.23.1",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -35,5 +35,5 @@
     "mongoose": "^6.6.1",
     "validator": "^13.7.0",
     "winston": "^3.8.2"
-  }
+  } 
 }

@@ -30,10 +30,10 @@ function App() {
     if (token) {
       auth.getInfo(token).then((res) => {
         if (res) {
-          console.log(token)
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
+          console.log(`tokenCheck ${token}`)
         }
       }).catch((err) => {
         setloggedIn(false)
@@ -42,7 +42,6 @@ function App() {
     }
   }
 
-  // выход из приложения и удаления token
   const signOut = () => {
     localStorage.removeItem('token');
     setloggedIn(false);
@@ -50,7 +49,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck()
-  }, );
+  }, [tokenCheck]);
 
   return (
     <div className="page">
