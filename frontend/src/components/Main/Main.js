@@ -33,10 +33,7 @@ const Main = ({ onEditAvatar, onEditProfile, onAddPlace, onAddImage, onCardClick
 
       <section className="elements">
         <ul className="element">
-          {cards
-            ? cards.map(card => <Card card={card} onCardClick={onCardClick} onImageClick={onAddImage} onCardLike={onCardLike} onCardDelete={onCardDelete} key={card._id} />)
-            : null
-          }
+          {cards.map(card => <Card card={card} onCardClick={onCardClick} onImageClick={onAddImage} onCardLike={onCardLike} onCardDelete={onCardDelete} key={card._id} />)}
         </ul>
       </section>
     </main>
