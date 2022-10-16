@@ -33,7 +33,6 @@ function App() {
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
-          console.log(`tokenCheck ${token}`)
         }
       }).catch((err) => {
         setloggedIn(false)
