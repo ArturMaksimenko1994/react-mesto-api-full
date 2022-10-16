@@ -50,7 +50,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck()
-  }, [tokenCheck]);
+  }, );
 
   return (
     <div className="page">
