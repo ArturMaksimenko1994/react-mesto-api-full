@@ -100,17 +100,17 @@ const Content = () => {
   
     //лайк card
     const handleCardLike = (card) => {
-      const isLiked = card.likes.some(i => i._id === currentUser._id);
+      const isLiked = card.some((i) => i === currentUser._id);
   
       !isLiked
-        ? api.putLikeCard(card._id)
+        ? api.putLikeCard(card._id, isLiked)
           .then((newCard) => {
-            setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+            setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
           })
           .catch((err) => {
             console.log(`Ошибка при лайке карточки ${err}`)
           })
-        : api.deleteLikeCard(card._id)
+        : api.deleteLikeCard(card._id, isLiked)
           .then((newCard) => {
             setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
           })
