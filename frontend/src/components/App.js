@@ -30,6 +30,7 @@ function App() {
     if (token) {
       auth.getInfo(token).then((res) => {
         if (res) {
+          console.log(token)
           setloggedIn(true)
           history.push('/content')
           setEmail(res.data.email)
