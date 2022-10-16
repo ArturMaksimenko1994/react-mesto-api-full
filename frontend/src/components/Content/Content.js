@@ -99,26 +99,38 @@ const Content = () => {
   
   
     //лайк card
-    const handleCardLike = (card, _id) => {
-      const isLiked = card.some((i) => i === currentUser._id);
+    // const handleCardLike = (card, _id) => {
+    //   const isLiked = card.some((i) => i === currentUser._id);
   
-      !isLiked
-        ? api.putLikeCard(card._id)
-          .then((newCard) => {
-            setCards((state) => state.map((c) => (c._id === _id ? newCard : c)));
-          })
-          .catch((err) => {
-            console.log(`Ошибка при лайке карточки ${err}`)
-          })
-        : api.deleteLikeCard(card._id)
-          .then((newCard) => {
-            setCards((state) => state.map((c) => (c._id === _id ? newCard : c)));
-          })
-          .catch((err) => {
-            console.log(`Ошибка при лайке карточки ${err}`)
-          })
+    //   !isLiked
+    //     ? api.putLikeCard(card._id)
+    //       .then((newCard) => {
+    //         setCards((state) => state.map((c) => (c._id === _id ? newCard : c)));
+    //       })
+    //       .catch((err) => {
+    //         console.log(`Ошибка при лайке карточки ${err}`)
+    //       })
+    //     : api.deleteLikeCard(card._id)
+    //       .then((newCard) => {
+    //         setCards((state) => state.map((c) => (c._id === _id ? newCard : c)));
+    //       })
+    //       .catch((err) => {
+    //         console.log(`Ошибка при лайке карточки ${err}`)
+    //       })
+    // }
+
+    const handleCardLike = (likes, _id) => {
+      const isLiked = likes.some((i) => i === currentUser._id);
+  
+      api
+        .changeLikeCardStatus(_id, isLiked)
+        .then((newCard) => {
+          setCards((state) => state.map((c) => (c._id === _id ? newCard : c)));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  
   
     const handleCardDelete = (card) => {
       setIsOpenPopotDelete(true)
