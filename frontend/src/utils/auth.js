@@ -28,14 +28,8 @@ export const authorize = (password, email) => {
     },
     body: JSON.stringify({password, email})
   })
-  .then(handleResponse)
-  .then((data) => {
-    if (data.token) {
-      localStorage.setItem('token', data.token)
-      return data
-    }
-  })
-};
+  .then(handleResponse);
+}
 
 export const getInfo = (token) => {
   return fetch(`${BASE_URL}/users/me`, {

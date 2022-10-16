@@ -29,7 +29,7 @@ const Login = ( {handleLogin} ) => {
             const { password, email} = data;
             auth.authorize(password, email).then((data) => {
                 if (data.token) {
-                    // localStorage.setItem("token", data.token);
+                    localStorage.setItem("token", data.token);
                     handleLogin()
                     history.push('/')
                 }
