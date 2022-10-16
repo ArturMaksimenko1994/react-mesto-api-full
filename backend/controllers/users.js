@@ -134,7 +134,7 @@ const updateAvatar = (req, res, next) => {
     .orFail(() => {
       throw new Error('NotFound');
     })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new ErrorValidation('Переданы некорректные данные при обновлении аватара'));
