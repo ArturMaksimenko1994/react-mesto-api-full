@@ -153,7 +153,7 @@ const getUserInfo = (req, res, next) => {
     .orFail(() => {
       throw new Error('NotFound');
     })
-    .then((user) => res.send(user))
+    .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.message === 'NotFound') {
         return next(new ErrorNotFound('Пользователь не найден'));
