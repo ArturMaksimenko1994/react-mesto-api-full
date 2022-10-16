@@ -33,14 +33,6 @@ class Api {
       .then((res) => this._handleResponse(res))
   }
 
-  changeLikeCardStatus(id, isLiked) {
-    if (isLiked) {
-      return api.deleteLikeCard(id);
-    } else {
-      return api.putLikeCard(id);
-    }
-  }
-
   editProfile(newValue) {
       return fetch(`${this._address}/users/me`, {
           method: 'PATCH',
