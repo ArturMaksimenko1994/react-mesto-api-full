@@ -99,7 +99,7 @@ const Content = () => {
   
   
     //лайк card
-    const handleCardLike = (card) => {
+    const handleCardLike = (card, _id) => {
       const isLiked = card.some((i) => i === currentUser._id);
   
       !isLiked
