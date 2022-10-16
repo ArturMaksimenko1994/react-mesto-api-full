@@ -11,7 +11,7 @@ const createCard = (req, res, next) => {
   const { name, link } = req.body;
   const owner = req.user._id;
   Card.create({ name, link, owner })
-    .then((card) => res.send(card))
+    .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ErrorValidation('Переданы некорректные данные при создании карточки'));
@@ -64,7 +64,7 @@ const likeCard = (req, res, next) => {
     .orFail(() => {
       throw new Error('NotFound');
     })
-    .then((card) => res.send(card))
+    .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'CastError') {
         return next(new ErrorValidation('Передан несуществующий _id карточки'));
@@ -87,7 +87,7 @@ const dislikeCard = (req, res, next) => {
     .orFail(() => {
       throw new Error('NotFound');
     })
-    .then((card) => res.send(card))
+    .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === 'CastError') {
         return next(new ErrorValidation('Передан несуществующий _id карточки'));
