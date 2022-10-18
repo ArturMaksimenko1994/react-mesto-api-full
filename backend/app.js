@@ -2,6 +2,8 @@ const express = require('express'); // подключение express
 const mongoose = require('mongoose'); // подключение mongoose
 const bodyParser = require('body-parser'); // подключение body-parser
 
+require('dotenv').config();
+
 const { celebrate, Joi, errors } = require('celebrate'); // подключение celebrate
 
 // routes
@@ -23,8 +25,6 @@ const { RegularExpressions } = require('./validator/regular-expressions');
 
 // создаем сервер
 const app = express();
-
-require('dotenv').config();
 
 // слушаем 3000 порт
 const { PORT = 3000 } = process.env;
@@ -70,14 +70,14 @@ app.use('/users', auth, userRouter);
 
 app.use('/cards', auth, cardRouter);
 
-app.use(errorLogger); // подключаем логгер ошибок
-
-app.use(errors());// обработчик ошибок celebrate
-
 // централизованный обработчик ошибок
 app.use(auth, ((req, res, next) => {
   next(new ErrorNotFound('Страница не найдена'));
 }));
+
+app.use(errorLogger); // подключаем логгер ошибок
+
+app.use(errors());// обработчик ошибок celebrate
 
 // обрабатываем все ошибки
 app.use(ErrorHandler);
